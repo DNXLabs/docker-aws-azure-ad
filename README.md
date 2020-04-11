@@ -9,10 +9,15 @@ It exports the AWS vars to the /work/.env
 Inside the docker-compose
 
 ```
-azure-auth:
-    image: dnxsolutions/aws-azure-ad:1.0.0
-    volumes:
-      - ./.env.auth:/work/.env
-    environment:
-      - AZURE_TENANT_ID
-      - AZURE_APP_ID_URI
+services:
+  azure-auth:
+      image: dnxsolutions/aws-azure-ad:1.0.0
+      volumes:
+        - ./.env.auth:/work/.env
+      environment:
+        - AZURE_TENANT_ID
+        - AZURE_APP_ID_URI
+
+This image requires two Azure AD environemnt variables
+- AZURE_TENANT_ID, to check the correct value, please log in into Azure portal -> AD -> Tenant ID is displayed
+- AZURE_APP_ID_URI, to check the correct value, please log in into Azure portal -> AD -> Enterprise Applications -> Amazon Web Services (AWS)  -> Application ID is displayed 
