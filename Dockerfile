@@ -48,7 +48,7 @@ RUN apt-get update \
    gettext-base \
    && pip3 install --upgrade pip \
    && pip --no-cache-dir install awscli \
-   && apt-get -q -y clean
+   && apt-get -q -y clean \
    && rm -rf /var/cache/apt/archives/* /var/lib/apt/lists/*
 
 
