@@ -11,7 +11,7 @@ Inside the docker-compose
 ```
 services:
   azure-auth:
-      image: dnxsolutions/aws-azure-ad:1.0.0
+      image: dnxsolutions/docker-aws-azure-ad:1.0.0
       volumes:
         - ./.env.auth:/work/.env
       environment:
