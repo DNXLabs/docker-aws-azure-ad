@@ -46,8 +46,8 @@ RUN apt-get update \
    python3-setuptools=33.1.1-1 \
    groff=1.22.3-9 \
    gettext-base=0.19.8.1-2+deb9u1 \
-   && pip3 install --upgrade pip \
-   && pip --no-cache-dir install awscli \
+   && pip3 install --upgrade pip==20.1 \
+   && pip --no-cache-dir install awscli==1.18.48 \
    && apt-get -q -y clean \
    && rm -rf /var/cache/apt/archives/* /var/lib/apt/lists/*
 
