@@ -55,12 +55,12 @@ RUN apt-get update \
 RUN npm install -g aws-azure-login --unsafe-perm
 
 
-ADD src/config.tpl config.tpl
+COPY src/config.tpl config.tpl
 RUN mkdir /root/.aws
 RUN mkdir /work/
 
 
-ADD src/docker-entrypoint.sh /bin/docker-entrypoint.sh
+COPY src/docker-entrypoint.sh /bin/docker-entrypoint.sh
 RUN chmod +x /bin/docker-entrypoint.sh
 
 
