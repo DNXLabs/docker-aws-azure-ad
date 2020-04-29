@@ -52,7 +52,7 @@ RUN apt-get update \
    && rm -rf /var/cache/apt/archives/* /var/lib/apt/lists/*
 
 
-RUN npm install -g aws-azure-login --unsafe-perm
+RUN npm install -g aws-azure-login@2.1.0 --unsafe-perm
 
 
 COPY src/config.tpl config.tpl
