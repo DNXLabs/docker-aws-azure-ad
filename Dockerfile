@@ -2,7 +2,7 @@ FROM node:10-slim
 
 # Install Puppeteer dependencies: https://github.com/GoogleChrome/puppeteer/blob/master/docs/troubleshooting.md#chrome-headless-doesnt-launch
 RUN apt-get update \
-   && apt-get install -y \
+   && apt-get --no-install-recommends install -y \
    gconf-service \
    libasound2 \
    libatk1.0-0 \
