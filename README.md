@@ -1,5 +1,8 @@
 # docker-aws-azure-ad
 
+![Security](https://github.com/DNXLabs/docker-aws-azure-ad/workflows/Security/badge.svg)
+![Lint](https://github.com/DNXLabs/docker-aws-azure-ad/workflows/Lint/badge.svg)
+
 This container is used to perform AWS SSO using Azure AD.
 The image was bases on https://github.com/sportradar/aws-azure-login
 
