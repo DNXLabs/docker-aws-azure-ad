@@ -23,4 +23,4 @@ services:
 
 This image requires two Azure AD environemnt variables
 - AZURE_TENANT_ID, to check the correct value, please log in into Azure portal -> AD -> Tenant ID is displayed
-- AZURE_APP_ID_URI, to check the correct value, please log in into Azure portal -> AD -> Enterprise Applications -> Amazon Web Services (AWS)  -> Application ID is displayed 
+- AZURE_APP_ID_URI, to check the correct value, please log in into Azure portal -> AD -> Enterprise Applications -> Amazon Web Services (AWS)  -> Application ID is displayed

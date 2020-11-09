@@ -1,5 +1,5 @@
 VERSION = 1.0.0
-IMAGE_NAME ?= dnxsolutions/aws-azure-ad:$(VERSION)
+IMAGE_NAME ?= dnxsolutions/docker-aws-azure-ad:$(VERSION)
 TAG = $(VERSION)
 
 build:
