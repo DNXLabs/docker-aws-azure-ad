@@ -48,14 +48,11 @@ RUN apt-get update \
    python3-setuptools=33.1.1-1 \
    groff=1.22.3-9 \
    gettext-base=0.19.8.1-2+deb9u1 \
-   && pip3 install --upgrade pip==20.2.4 \
+   && pip3 install --no-cache-dir --upgrade pip==20.2.4 \
    && pip --no-cache-dir install awscli==1.18.48 \
    && apt-get -q -y clean \
-   && rm -rf /var/cache/apt/archives/* /var/lib/apt/lists/*
-
-
-RUN npm install -g aws-azure-login@2.1.0 --unsafe-perm
-
+   && rm -rf /var/cache/apt/archives/* /var/lib/apt/lists/* \
+   && npm install -g aws-azure-login@2.1.0 --unsafe-perm
 
 COPY src/config.tpl config.tpl
 RUN mkdir /root/.aws
