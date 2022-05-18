@@ -11,13 +11,13 @@ RUN apk add --no-cache \
       ttf-freefont \
       nodejs \
       yarn \
-      gettext
+      gettext \
+      bash
 
 ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true \
     PUPPETEER_EXECUTABLE_PATH=/usr/bin/chromium-browser
 
-RUN apk add --no-cache bash
-RUN npm install -g aws-azure-login
+RUN npm install -g aws-azure-login@3.4.0
 
 RUN mkdir /root/.aws
 
