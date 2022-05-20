@@ -18,9 +18,9 @@ jobs:
         uses: docker/metadata-action@v3
         with:
           images: |
-            dnxsolutions/aws-azure-ad
-            ghcr.io/dnxlabs/aws-azure-ad
-            public.ecr.aws/dnxsolutions/aws-azure-ad
+            dnxsolutions/docker-aws-azure-ad
+            ghcr.io/dnxlabs/docker-aws-azure-ad
+            public.ecr.aws/dnxsolutions/docker-aws-azure-ad
           tags: |
             type=raw,value=latest
             type=ref,event=tag
