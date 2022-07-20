@@ -23,7 +23,6 @@ RUN apk --no-cache update && \
       nodejs \
       yarn \
       gettext \
-      icu-data-full \
       bash && \
     pip3 --no-cache-dir install awscli virtualenv setuptools dnxsso boto3 && \
     update-ca-certificates && \
