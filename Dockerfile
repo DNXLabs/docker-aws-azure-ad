@@ -2,7 +2,12 @@ FROM node:16-alpine
 
 WORKDIR /work
 
-RUN apk add --no-cache \
+RUN apk --no-cache update && \
+    apk add --no-cache \
+      python3 \
+      python3-dev \
+      py-pip \
+      ca-certificates \
       chromium \
       nss \
       freetype \
@@ -13,6 +18,10 @@ RUN apk add --no-cache \
       yarn \
       gettext \
       bash
+
+RUN pip --no-cache-dir install awscli virtualenv && \
+    update-ca-certificates && \
+    rm -rf /var/cache/apk/*
 
 ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true \
     PUPPETEER_EXECUTABLE_PATH=/usr/bin/chromium-browser
