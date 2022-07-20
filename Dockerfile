@@ -1,9 +1,15 @@
 FROM node:16-alpine
 
+ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true \
+    PUPPETEER_EXECUTABLE_PATH=/usr/bin/chromium-browser
+
 WORKDIR /work
 
+COPY src/config.tpl config.tpl
+COPY src/docker-entrypoint.sh /bin/docker-entrypoint.sh
+
 RUN apk --no-cache update && \
-    apk add --no-cache \
+    apk --no-cache add \
       python3 \
       python3-dev \
       py-pip \
@@ -17,22 +23,13 @@ RUN apk --no-cache update && \
       nodejs \
       yarn \
       gettext \
-      bash
-
-RUN pip --no-cache-dir install awscli virtualenv && \
+      icu-data-full \
+      bash && \
+    pip3 --no-cache-dir install awscli virtualenv setuptools dnxsso boto3 && \
     update-ca-certificates && \
-    rm -rf /var/cache/apk/*
-
-ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true \
-    PUPPETEER_EXECUTABLE_PATH=/usr/bin/chromium-browser
-
-RUN npm install -g aws-azure-login@3.4.0
-
-RUN mkdir /root/.aws
-
-COPY src/config.tpl config.tpl
-
-COPY src/docker-entrypoint.sh /bin/docker-entrypoint.sh
-RUN chmod +x /bin/docker-entrypoint.sh
+    rm -rf /var/cache/apk/* && \
+    npm install -g aws-azure-login@3.4.0 && \
+    mkdir /root/.aws && \
+    chmod +x /bin/docker-entrypoint.sh
 
 ENTRYPOINT ["/bin/docker-entrypoint.sh"]
