@@ -24,7 +24,7 @@ RUN apk --no-cache update && \
       yarn \
       gettext \
       bash && \
-    pip3 --no-cache-dir install awscli virtualenv setuptools dnxsso boto3 && \
+    pip3 --no-cache-dir install 'awscli<2.7.17' --upgrade && \
     update-ca-certificates && \
     rm -rf /var/cache/apk/* && \
     npm install -g aws-azure-login@3.4.0 && \
