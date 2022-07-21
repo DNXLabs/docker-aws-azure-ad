@@ -1,8 +1,19 @@
 FROM node:16-alpine
 
+ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true \
+    PUPPETEER_EXECUTABLE_PATH=/usr/bin/chromium-browser
+
 WORKDIR /work
 
-RUN apk add --no-cache \
+COPY src/config.tpl config.tpl
+COPY src/docker-entrypoint.sh /bin/docker-entrypoint.sh
+
+RUN apk --no-cache update && \
+    apk --no-cache add \
+      python3 \
+      python3-dev \
+      py-pip \
+      ca-certificates \
       chromium \
       nss \
       freetype \
@@ -12,18 +23,12 @@ RUN apk add --no-cache \
       nodejs \
       yarn \
       gettext \
-      bash
-
-ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true \
-    PUPPETEER_EXECUTABLE_PATH=/usr/bin/chromium-browser
-
-RUN npm install -g aws-azure-login@3.4.0
-
-RUN mkdir /root/.aws
-
-COPY src/config.tpl config.tpl
-
-COPY src/docker-entrypoint.sh /bin/docker-entrypoint.sh
-RUN chmod +x /bin/docker-entrypoint.sh
+      bash && \
+    pip3 --no-cache-dir install 'awscli<2.7.17' --upgrade && \
+    update-ca-certificates && \
+    rm -rf /var/cache/apk/* && \
+    npm install -g aws-azure-login@3.4.0 && \
+    mkdir /root/.aws && \
+    chmod +x /bin/docker-entrypoint.sh
 
 ENTRYPOINT ["/bin/docker-entrypoint.sh"]
